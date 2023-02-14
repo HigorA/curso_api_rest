@@ -1,7 +1,6 @@
 package br.com.curso.controllers;
 
 import br.com.curso.data.vo.v1.PersonVO;
-import br.com.curso.model.Person;
 import br.com.curso.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
     @Autowired
@@ -29,13 +28,13 @@ public class PersonController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void create(@RequestBody PersonVO person) {
-        service.create(person);
+    public PersonVO create(@RequestBody PersonVO person) {
+        return service.create(person);
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@RequestBody PersonVO person) {
-        service.update(person);
+    public PersonVO update(@RequestBody PersonVO person) {
+        return service.update(person);
     }
 
     @DeleteMapping(value = "/{id}")
