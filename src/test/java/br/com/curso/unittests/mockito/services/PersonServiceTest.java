@@ -108,14 +108,13 @@ class PersonServiceTest {
     void update() {
         Person entity = input.mockEntity(1);
 
-        Person persisted = entity;
-        persisted.setId(1L);
+        entity.setId(1L);
 
         PersonVO personVO = input.mockVO(1);
         personVO.setKey(1L);
 
         when(personRepository.findById(1L)).thenReturn(Optional.of(entity));
-        when(personRepository.save(entity)).thenReturn(persisted);
+        when(personRepository.save(entity)).thenReturn(entity);
 
         var result = personService.update(personVO);
 
@@ -146,13 +145,12 @@ class PersonServiceTest {
         Person entity = input.mockEntity(1);
         entity.setId(1L);
 
-        Person persisted = entity;
-        persisted.setId(1L);
+        entity.setId(1L);
 
         PersonVO personVO = input.mockVO(1);
         personVO.setKey(1L);
 
-        when(personRepository.save(entity)).thenReturn(persisted);
+        when(personRepository.save(entity)).thenReturn(entity);
 
         var result = personService.create(personVO);
 

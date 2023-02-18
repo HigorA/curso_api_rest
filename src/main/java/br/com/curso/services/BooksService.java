@@ -52,7 +52,7 @@ public class BooksService {
     public BooksVO update(BooksVO booksVO) {
         logger.info("Updating a Book.");
         if (booksVO == null) {throw new RequiredObjectIsNullException();}
-        var book = DozerMapper.parseObject(repository.findById(booksVO.getKey()), Books.class);
+        var book = repository.findById(booksVO.getKey()).orElseThrow(() -> new ResourceNotFoundException("Resource not found."));
         book.setAuthor(booksVO.getAuthor());
         book.setLaunchDate(booksVO.getLaunchDate());
         book.setPrice(booksVO.getPrice());

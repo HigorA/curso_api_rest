@@ -3,6 +3,7 @@ package br.com.curso.unittests.mapper.mocks;
 import br.com.curso.data.vo.v1.BooksVO;
 import br.com.curso.model.Books;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class MockBook {
         books.setId(number.longValue());
         books.setAuthor("Author test" + number);
         books.setPrice(number.doubleValue());
-        books.setLaunchDate(null);
+        books.setLaunchDate(LocalDate.now());
         books.setTitle("Title test" + number);
         return books;
     }
@@ -31,7 +32,7 @@ public class MockBook {
         books.setKey(number.longValue());
         books.setAuthor("Author test" + number);
         books.setPrice(number.doubleValue());
-        books.setLaunchDate(null);
+        books.setLaunchDate(LocalDate.now());
         books.setTitle("Title test" + number);
         return books;
     }
